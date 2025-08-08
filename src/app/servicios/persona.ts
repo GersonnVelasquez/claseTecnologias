@@ -3,7 +3,10 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
+  doc,
   Firestore,
+  updateDoc,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -22,38 +25,15 @@ export class Persona {
     return addDoc(personaCollection, persona);
   }
 
-  updatePersona(persona: any) {}
+  updatePersona(persona: any) {
+    const personaCollection = collection(this.firestore, 'personas');
+    const personaDoc = doc(personaCollection, persona.uuid);
+    return updateDoc(personaDoc, persona);
+  }
 
-  deletePersona(personaId: number) {}
-
-  // getUsuarios() {
-  //   const usuarioCollection = collection(this.firestore, 'usuariooos');
-  //   return collectionData(usuarioCollection, { idField: 'uuid' });
-  // }
-
-  // getUsuario(id: string) {
-  //   const usuarioCollection = collection(this.firestore, 'usuariooos');
-  //   const usuarioDoc = doc(usuarioCollection, id);
-  //   return getDoc(usuarioDoc)
-  // }
-
-  // addUsuario(usuario: Usuario) {
-  //   const usuarioCollection = collection(this.firestore, 'usuariooos');
-  //   return addDoc(usuarioCollection, usuario);
-  // }
-
-  // editUsuario(usuario: Usuario) {
-  //   const usuarioCollection = collection(this.firestore, 'usuariooos');
-  //   const usuarioDoc = doc(usuarioCollection, usuario.uuid);
-  //   return updateDoc(usuarioDoc, {
-  //     ...usuario,
-  //   });
-  // }
-
-  // deleteUsuario(usuario: Usuario) {
-  //   const usuarioCollection = collection(this.firestore, 'usuariooos');
-  //   const usuarioDoc = doc(usuarioCollection, usuario.uuid);
-  //   console.log('hola mundo');
-  //   return deleteDoc(usuarioDoc);
-  // }
+  deletePersona(personaId: string) {
+    const personaCollection = collection(this.firestore, 'personas');
+    const personaDoc = doc(personaCollection, personaId);
+    return deleteDoc(personaDoc);
+  }
 }
