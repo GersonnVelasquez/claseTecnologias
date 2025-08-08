@@ -1,7 +1,34 @@
-<button (click)="agregarPersona()">Agregar Persona</button>
+<form (submit)="guardarPersona()" [formGroup]="personaForm">
+  <label>Nombre:</label>
+  <input formControlName="nombre" type="text" />
+  <label>Edad:</label>
+  <input formControlName="edad" type="number" />
+  <label>Email:</label>
+  <input formControlName="email" type="email" />
+  <label>Telefono:</label>
+  <input formControlName="telefono" type="tel" />
+  <button type="submit">Guardar</button>
+  <label>Personas:</label>
+</form>
 
-{{ variable1 }}
-
-<pre>
-  {{ personas | json }}
-</pre>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th>Email</th>
+    <th>Telefono</th>
+    <th>Acciones</th>
+  </tr>
+  @for (persona of personas; track $index) {
+  <tr>
+    <td>{{ persona.nombre }}</td>
+    <td>{{ persona.edad }}</td>
+    <td>{{ persona.email }}</td>
+    <td>{{ persona.telefono }}</td>
+    <td>
+      <button (click)="editarPersona(persona)">Editar</button>
+      <button (click)="borrarPersona(persona)">Borrar</button>
+    </td>
+  </tr>
+  }
+</table>
