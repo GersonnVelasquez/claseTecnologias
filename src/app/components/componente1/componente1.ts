@@ -62,6 +62,7 @@ export class Componente1 {
   editarPersona(persona: any) {
     this.personaForm.setValue(persona);
     console.log('form Value', this.personaForm.value);
+    console.log('Editar persona', persona);
   }
 
   getPersonas() {
