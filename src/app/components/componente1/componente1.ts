@@ -56,6 +56,7 @@ export class Componente1 {
 
   borrarPersona(persona: any) {
     this.personaService.deletePersona(persona.uuid);
+    console.log('Borrando persona', persona);
   }
 
   editarPersona(persona: any) {
