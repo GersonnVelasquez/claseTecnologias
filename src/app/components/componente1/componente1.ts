@@ -56,11 +56,13 @@ export class Componente1 {
 
   borrarPersona(persona: any) {
     this.personaService.deletePersona(persona.uuid);
+    console.log('Borrando persona', persona);
   }
 
   editarPersona(persona: any) {
     this.personaForm.setValue(persona);
     console.log('form Value', this.personaForm.value);
+    console.log('Editar persona', persona);
   }
 
   getPersonas() {
