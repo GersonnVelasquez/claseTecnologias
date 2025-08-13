@@ -4,16 +4,34 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/componente1/componente1').then((m) => m.Componente1),
+      import('./components/login/login').then((m) => m.Login),
   },
   {
-    path: 'component2',
+    path: 'home',
     loadComponent: () =>
-      import('./components/componente2/componente2').then((m) => m.Componente2),
-  },
-  {
-    path: 'component3',
-    loadComponent: () =>
-      import('./components/componente3/componente3').then((m) => m.Componente3),
+      import('./components/layout/layout').then((m) => m.Layout),
+    loadChildren: () => [
+      {
+        path: 'component1',
+        loadComponent: () =>
+          import('./components/componente1/componente1').then(
+            (m) => m.Componente1
+          ),
+      },
+      {
+        path: 'component2',
+        loadComponent: () =>
+          import('./components/componente2/componente2').then(
+            (m) => m.Componente2
+          ),
+      },
+      {
+        path: 'component3',
+        loadComponent: () =>
+          import('./components/componente3/componente3').then(
+            (m) => m.Componente3
+          ),
+      },
+    ],
   },
 ];

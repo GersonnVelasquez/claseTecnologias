@@ -1,0 +1,15 @@
+.layout {
+  background-color: red;
+}
+
+@media (min-width: 400px) {
+  .layout {
+    background-color: blue;
+  }
+}
+
+@media (min-width: 800px) {
+  .layout {
+    background-color: green;
+  }
+}
