@@ -1,1 +1,26 @@
-<p>login works!</p>
+<h1>Iniciar Sesión</h1>
+<form [formGroup]="loginForm">
+  <label>Usuario</label>
+  <input formControlName="email" type="email" />
+  <label>Contraseña</label>
+  <input formControlName="password" type="password" />
+  <button (click)="iniciarSesion()">Iniciar Sesión</button>
+</form>
+
+<h1>Registrase</h1>
+<form [formGroup]="registerForm">
+  <label>Usuario</label>
+  <input formControlName="email" type="email" />
+  <label>Contraseña</label>
+  <input formControlName="password" type="password" />
+  <button (click)="registrar()">Registrarse</button>
+</form>
+
+<h1>Cerrar Sesión</h1>
+<button (click)="cerrarSesion()">Cerrar Sesión</button>
+
+<h1>USUARIO</h1>
+<p>Loggeado: {{ authService.loggeado }}</p>
+<pre
+  >{{ authService.currentUser | json }}
+</pre>
